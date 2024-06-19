@@ -12,6 +12,16 @@ module.exports = {
       type: {
         type: Sequelize.ENUM('CLT', 'PJ')
       },
+      employee_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'employees', key: 'id' }
+      },
+      contract_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'contracts', key: 'id' }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
