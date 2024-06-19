@@ -18,6 +18,16 @@ module.exports = {
       start_date: {
         type: Sequelize.DATEONLY
       },
+      employee_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'employees', key: 'id' } //model = nome da table
+      },
+      department_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'departments', key: 'id' }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
