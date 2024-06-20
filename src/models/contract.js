@@ -4,13 +4,17 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Contract extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
     static associate(models) {
-      // define association here
+      Contract.belongsTo(models.Department, {
+        foreignKey: 'department_id'
+      });
+      Contract.hasOne(models.Employee, {
+        foreignKey: 'employee_id'
+      });
+      Contract.hasOne(models.Record, {
+        foreignKey: 'record_id'
+      });
     }
   }
   Contract.init({
