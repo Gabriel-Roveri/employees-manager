@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Contract.belongsTo(models.Department, {
         foreignKey: 'department_id'
-      });
-      Contract.hasOne(models.Employee, {
+      })
+      Contract.belongsTo(models.Employee, {
         foreignKey: 'employee_id'
-      });
+      })
       Contract.hasOne(models.Record, {
         foreignKey: 'record_id'
-      });
+      })
     }
   }
   Contract.init({

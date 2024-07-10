@@ -7,11 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     
     static associate(models) {
       Employee.hasMany(models.Contract, {
-        foreignKey: 'employee_contract_id'
+        foreignKey: 'contract_id'
       });
 
       Employee.hasOne(models.Record, {
-        foreignKey: 'employee_record_id'
+        foreignKey: 'record_id',
+        as: 'employeeRecords'
       });
     }
   }
@@ -24,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Employee',
+    tableName: "employees"
   });
   return Employee;
 };

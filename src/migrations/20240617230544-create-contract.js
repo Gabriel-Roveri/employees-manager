@@ -1,5 +1,4 @@
 'use strict';
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('contracts', {
@@ -18,15 +17,15 @@ module.exports = {
       start_date: {
         type: Sequelize.DATEONLY
       },
-      employee_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'employees', key: 'id' } //model = nome da table
-      },
       department_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'departments', key: 'id' }
+      },
+      employee_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'employees', key: 'id' } //model = nome da table
       },
       createdAt: {
         allowNull: false,

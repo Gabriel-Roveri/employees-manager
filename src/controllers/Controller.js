@@ -1,5 +1,4 @@
 class Controller {
-    
     constructor(serviceEntity) {
         this.serviceEntity = serviceEntity;
     }
@@ -17,34 +16,27 @@ class Controller {
        
         const { id } = req.params;
         try {
-        
-        const log = await this.serviceEntity.getLogById(Number(id));
-        return res.status(200).json(log);
+            const log = await this.serviceEntity.getLogById(Number(id));
+            return res.status(200).json(log);
         } catch (error) {
         // error
         }
     }
 
     async newLog(req, res) {
-
         const createdData = req.body;
-        
         try {
-            
-        const newCreatedLog = await this.serviceEntity.createLog(createdData);
-        return res.status(200).json(newCreatedLog);
+            const newCreatedLog = await this.serviceEntity.createLog(createdData);
+            return res.status(200).json(newCreatedLog);
         } catch (error) {
         // error
         }
     }
     
     async update(req, res) {
-        
         const { id } = req.params;
         const updatedData = req.body;
-
         try {
-            
             const isUpdated = await this.serviceEntity.logUpdate(updatedData, Number(id));
             if (!isUpdated) {
                 return res.status(400).json({ message: `Log did not update!` });
