@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   class Record extends Model {
     
     static associate(models) {
-      Record.hasOne(models.Employee, {
+      Record.belongsTo(models.Employee, {
         foreignKey: 'employee_id'
-      });
-      Record.hasOne(models.Contract, {
+      })
+      Record.belongsTo(models.Contract, {
         foreignKey: 'contract_id'
-      });
+      })
     }
   }
   Record.init({
